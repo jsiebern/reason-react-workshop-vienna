@@ -1,12 +1,11 @@
 open Emotion;
 
 global(
-  "html",
-  [
-    fontFamily("'Arvo', serif"),
-    fontSize(`px(28)),
-    lineHeight(`em(1.15)),
-  ],
+  "html, body, #root, #root > div",
+  [margin(0->px), padding(0->px), width(100.->pct), height(100.->pct)],
 );
+global("*", [boxSizing(`borderBox), fontFamily("Roboto")]);
 
-global("ul", [padding(`px(0)), listStyleType(`none)]);
+global(".leaflet-container", [height(100.->pct), width(100.->pct)]);
+
+global(".leaflet-popup-content-wrapper", [borderRadius(0->px)]);

@@ -2,32 +2,39 @@
 
 import * as Emotion from "bs-emotion/src/Emotion.bs.js";
 
-Emotion.$$global("html", /* :: */[
-      Emotion.fontFamily("'Arvo', serif"),
+Emotion.$$global("html, body, #root, #root > div", /* :: */[
+      Emotion.margin(Emotion.px(0)),
       /* :: */[
-        Emotion.fontSize(/* `px */[
-              25096,
-              28
-            ]),
+        Emotion.padding(Emotion.px(0)),
         /* :: */[
-          Emotion.lineHeight(/* `em */[
-                22632,
-                1.15
-              ]),
-          /* [] */0
+          Emotion.width(Emotion.pct(100)),
+          /* :: */[
+            Emotion.height(Emotion.pct(100)),
+            /* [] */0
+          ]
         ]
       ]
     ]);
 
-Emotion.$$global("ul", /* :: */[
-      Emotion.padding(/* `px */[
-            25096,
-            0
-          ]),
+Emotion.$$global("*", /* :: */[
+      Emotion.boxSizing(/* borderBox */9307263),
       /* :: */[
-        Emotion.listStyleType(/* none */-922086728),
+        Emotion.fontFamily("Roboto"),
         /* [] */0
       ]
+    ]);
+
+Emotion.$$global(".leaflet-container", /* :: */[
+      Emotion.height(Emotion.pct(100)),
+      /* :: */[
+        Emotion.width(Emotion.pct(100)),
+        /* [] */0
+      ]
+    ]);
+
+Emotion.$$global(".leaflet-popup-content-wrapper", /* :: */[
+      Emotion.borderRadius(Emotion.px(0)),
+      /* [] */0
     ]);
 
 export {
