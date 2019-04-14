@@ -1,9 +1,9 @@
 [@react.component]
 let make =
     (
-      ~cities: option(array(Data.city)),
+      ~cities: option(array(Data_t.city)),
       ~selected: string,
-      ~removeCity: Data.city => unit,
+      ~removeCity: Data_t.city => unit,
     ) =>
   switch (cities) {
   | Some(c) =>

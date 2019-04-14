@@ -20,6 +20,7 @@
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
+    "@ahrefs/bs-atdgen-codec-runtime",
     "reason-react",
     "bs-emotion",
     "@jsiebern/bs-material-ui",

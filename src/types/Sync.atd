@@ -1,0 +1,31 @@
+type imageHit = {
+    largeImageURL: string;
+}
+
+type imageOuter = {
+    ?hits: imageHit list option;
+}
+
+type streetAddress = {
+    city: string;
+    country: string;
+}
+
+type city = {
+    place_id: int;
+    ?address: streetAddress option;
+    lat: string;
+    lng <json name="lon">: string;
+}
+
+type streetMain = city list
+
+type wikiMain = {
+    query: wikiQuery;
+}
+type wikiQuery = {
+    pages: (string * wikiPage) list <json repr="object">;
+}
+type wikiPage = {
+    extract: string;
+}

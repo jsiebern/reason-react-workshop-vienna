@@ -1,5 +1,5 @@
 [@react.component]
-let make = (~addCity: Data.city => unit) => {
+let make = (~addCity: Data_t.city => unit) => {
   let (text, setText) = React.useReducer((_, t: string) => t, "");
 
   let goFetch = () => {

@@ -13,6 +13,7 @@ import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.js";
 import * as Sync$ReactTemplate from "./Sync.bs.js";
 import * as Layout$ReactTemplate from "./Layout.bs.js";
 import * as CityMap$ReactTemplate from "./CityMap.bs.js";
+import * as Data_bs$ReactTemplate from "./types/Data_bs.bs.js";
 import * as CityList$ReactTemplate from "./CityList.bs.js";
 
 function App(Props) {
@@ -21,7 +22,7 @@ function App(Props) {
   var tmp;
   try {
     tmp = Belt_Option.getWithDefault(Belt_Option.map(Caml_option.null_to_opt(localStorage.getItem("result")), (function (item) {
-                return JSON.parse(item);
+                return /* record */[/* cities */Curry._1(Data_bs$ReactTemplate.read_cityArray, JSON.parse(item))];
               })), /* record */[/* cities */undefined]);
   }
   catch (exn){
@@ -44,7 +45,7 @@ function App(Props) {
                                   return Caml_primitive.caml_string_compare(c1[/* name */1], c2[/* name */1]);
                                 }));
                   }))];
-          localStorage.setItem("result", Belt_Option.getWithDefault(Caml_option.undefined_to_opt(JSON.stringify(result$1)), ""));
+          localStorage.setItem("result", JSON.stringify(Curry._1(Data_bs$ReactTemplate.write_cityArray, result$1[/* cities */0])));
           setTimeout((function (param) {
                   if (redirect[0]) {
                     return ReasonReactRouter.push("/");

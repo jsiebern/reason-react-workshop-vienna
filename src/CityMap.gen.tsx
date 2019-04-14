@@ -3,11 +3,8 @@
 // tslint:disable-next-line:no-var-requires
 const CityMapBS = require('./CityMap.bs');
 
-import {city as Data_city} from './Data.gen';
+import {city as Data_t_city} from './Data_t.gen';
 
 import {element as React_element} from '../src/shims/React.gen';
 
-export const make: (_1:{ readonly cities?: Data_city[]; readonly selected: string }) => React_element = function (Arg1: any) {
-  const result = CityMapBS.make({cities:(Arg1.cities == null ? undefined : Arg1.cities.map(function _element(ArrayItem: any) { return [ArrayItem.id, ArrayItem.name, ArrayItem.country, ArrayItem.coordinates, ArrayItem.image]})), selected:Arg1.selected});
-  return result
-};
+export const make: (_1:{ readonly cities?: Data_t_city[]; readonly selected: string }) => React_element = CityMapBS.make;

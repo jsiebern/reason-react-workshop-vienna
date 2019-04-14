@@ -12,12 +12,11 @@ let make = (~cityName: string) => {
       )
       |> then_(Fetch.Response.json)
       |> then_(json => {
-           let obj = json->Obj.magic;
-           let obj = obj##query##pages->Obj.magic;
-           let keys = obj->Js.Dict.keys;
-           let key = keys->Belt.Array.getExn(0);
-           let page = obj->Js.Dict.unsafeGet(key)->Obj.magic;
-           setContent(page##extract);
+           switch (json->Sync_bs.read_wikiMain) {
+           | {query: {pages: [(_, {extract}), ..._]}} =>
+             setContent(extract)
+           | _ => ()
+           };
            resolve();
          })
     )

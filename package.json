@@ -8,7 +8,8 @@
     "test": "tsc ./src/Leaflet.gen.tsx --lib \"es6\"",
     "webpack": "webpack -w",
     "webpack:production": "NODE_ENV=production webpack",
-    "server": "webpack-dev-server"
+    "server": "webpack-dev-server",
+    "types": "atdgen -t ./src/types/Sync.atd; atdgen -bs ./src/types/Sync.atd; atdgen -t ./src/types/Data.atd; atdgen -bs ./src/types/Data.atd"
   },
   "keywords": [
     "BuckleScript"
@@ -16,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@ahrefs/bs-atdgen-codec-runtime": "^1.2.0",
     "@jsiebern/bs-material-ui": "^1.1.0-hooks.2",
     "@material-ui/core": "^3.9.3",
     "bs-emotion": "^0.1.1",

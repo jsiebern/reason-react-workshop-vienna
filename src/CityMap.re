@@ -8,7 +8,7 @@ module Style = {
 
 [@genType]
 [@react.component]
-let make = (~cities: option(array(Data.city)), ~selected: string) => {
+let make = (~cities: option(array(Data_t.city)), ~selected: string) => {
   let selected =
     cities->Belt.Option.flatMap(city =>
       city->Belt.Array.keep(c => c.name === selected)->Belt.Array.get(0)

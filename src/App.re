@@ -1,10 +1,10 @@
 [@bs.val] external decodeURIComponent: string => string = "";
 
-type state = {cities: option(array(Data.city))};
+type state = {cities: Data_t.cityArray};
 
 type action =
-  | Add(Data.city)
-  | Remove(Data.city);
+  | Add(Data_t.city)
+  | Remove(Data_t.city);
 
 [@react.component]
 let make = () => {
@@ -51,7 +51,7 @@ let make = () => {
         Dom.Storage.localStorage
         |> Dom.Storage.setItem(
              "result",
-             result->Js.Json.stringifyAny->Belt.Option.getWithDefault(""),
+             result.cities->Data_bs.write_cityArray->Js.Json.stringify,
            );
         Js.Global.setTimeout(
           () =>
@@ -65,14 +65,16 @@ let make = () => {
       },
       try (
         Dom.Storage.getItem("result", Dom.Storage.localStorage)
-        ->Belt.Option.map(item => Js.Json.parseExn(item)->Obj.magic)
+        ->Belt.Option.map(item =>
+            {cities: Js.Json.parseExn(item)->Data_bs.read_cityArray}
+          )
         ->Belt.Option.getWithDefault({cities: None})
       ) {
       | _ => {cities: None}
       },
     );
 
-  let cityCallback = (c: Data.city) => {
+  let cityCallback = (c: Data_t.city) => {
     dispatch(Add(c));
   };
 
